@@ -3,6 +3,7 @@
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MasterDataController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DistrictController::class, 'index'])->name('landing-page');
@@ -10,9 +11,7 @@ Route::get('/district-result/{id}', [DistrictController::class, 'show'])->name('
 Route::get('/detail-information/{id}', [ContactController::class, 'show'])->name('detail-information');
 Route::get('/search-result', [ContactController::class, 'search'])->name('search');
 
-Route::get('/dashboard', function () {
-    return view('pages.admin.dashboard');
-});
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
 Route::get('/master-data', [MasterDataController::class, 'index'])->name('master-data.index');
 Route::get('/master-data/create', [MasterDataController::class, 'create'])->name('master-data.create');
