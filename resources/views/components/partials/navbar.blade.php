@@ -1,5 +1,5 @@
 <nav id="navbar" class="fixed w-full z-10 top-0 left-0 py-1 bg-[#213555] transition-all duration-300">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="md:mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <div class="flex flex-column justify-center items-center gap-3 w-[110px] h-[40px]">
                 <img class="h-7 w-auto" src="{{ asset('img/logo.png') }}" alt="Your Company">
