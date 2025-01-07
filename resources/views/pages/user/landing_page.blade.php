@@ -134,7 +134,7 @@
         </div>
     </section>
 
-    <section id="faq" class="container mx-auto px-5 mb-10">
+    <section id="faq" class="container mx-auto px-5 mb-10 md:mb-[100px]">
         <div class="mx-auto">
             <h1 class="text-3xl lg:text-5xl font-bold text-center">Frequently Asked Question</h1>
             <p class="mt-3 text-sm md:text-xl md:mt-5 text-center mb-10">Lorem ipsum dolor sit amet consectetur adipisicing
