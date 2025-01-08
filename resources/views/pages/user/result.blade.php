@@ -71,21 +71,40 @@
                             </a>
                         @endif
                     </div>
+
                     <div class="flex gap-1">
-                        @foreach ($contacts->links()->elements[0] as $page => $url)
-                            @if ($page == $contacts->currentPage())
+                        @php
+                            $currentPage = $contacts->currentPage();
+                            $totalPages = $contacts->lastPage();
+                            $start = 1;
+                            $end = min(5, $totalPages);
+                        @endphp
+                        @for ($i = $start; $i <= $end; $i++)
+                            @if ($i == $currentPage)
                                 <button
                                     class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-                                    {{ $page }}
+                                    {{ $i }}
                                 </button>
                             @else
-                                <a href="{{ $url }}"
+                                <a href="{{ $contacts->url($i) }}"
                                     class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
-                                    {{ $page }}
+                                    {{ $i }}
                                 </a>
                             @endif
-                        @endforeach
+                        @endfor
+
+                        @if ($totalPages > 5)
+                            <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
+                        @endif
+
+                        @if ($totalPages > 5 && $currentPage < $totalPages)
+                            <a href="{{ $contacts->url($totalPages) }}"
+                                class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                {{ $totalPages }}
+                            </a>
+                        @endif
                     </div>
+
                     <div>
                         @if ($contacts->hasMorePages())
                             <a href="{{ $contacts->nextPageUrl() }}"
@@ -100,6 +119,7 @@
                         @endif
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
