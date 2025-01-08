@@ -105,10 +105,68 @@
                 </table>
             </div>
 
-            {{-- Pagination --}}
-            {{-- <div class="flex justify-center mt-5">
-                {{ $contacts->links('pagination::tailwind') }}
-            </div> --}}
+            <div class="flex flex-row justify-center items-center gap-4 mt-5 py-2">
+                <div>
+                    @if ($contacts->onFirstPage())
+                        <button
+                            class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    @else
+                        <a href="{{ $contacts->previousPageUrl() }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                            class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    @endif
+                </div>
+
+                <div class="flex gap-1">
+                    @php
+                        $currentPage = $contacts->currentPage();
+                        $totalPages = $contacts->lastPage();
+                        $start = 1;
+                        $end = min(5, $totalPages);
+                    @endphp
+                    @for ($i = $start; $i <= $end; $i++)
+                        @if ($i == $currentPage)
+                            <button
+                                class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">{{ $i }}</button>
+                        @else
+                            <a href="{{ $contacts->url($i) }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                                class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                {{ $i }}
+                            </a>
+                        @endif
+                    @endfor
+
+                    @if ($totalPages > 5)
+                        <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
+                    @endif
+
+                    @if ($totalPages > 5 && $currentPage < $totalPages)
+                        <a href="{{ $contacts->url($totalPages) }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                            class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                            {{ $totalPages }}
+                        </a>
+                    @endif
+                </div>
+
+                <div>
+                    @if ($contacts->hasMorePages())
+                        <a href="{{ $contacts->nextPageUrl() }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                            class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    @else
+                        <button
+                            class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    @endif
+                </div>
+            </div>
+
+
         </div>
     </section>
 @endsection

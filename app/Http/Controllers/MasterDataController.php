@@ -13,6 +13,8 @@ class MasterDataController extends Controller
     {
         $districtId = $request->input('district');
         $subDistrictId = $request->input('sub_district');
+        $search = $request->input('search');
+        $filter = $request->input('filter');
 
         $query = Contact::query();
 
@@ -40,7 +42,8 @@ class MasterDataController extends Controller
             });
         }
 
-        $contacts = $query->paginate(10);
+        $contacts = $query->paginate(10)->appends($request->only(['search', 'district', 'sub_district']));
+
         $districts = District::all();
         $subDistricts = $districtId ? SubDistrict::where('district_id', $districtId)->get() : collect();
 
