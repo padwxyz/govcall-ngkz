@@ -37,7 +37,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-3 text-sm md:text-xl font-semibold text-gray-900 dark:text-white">Wanna send message?</h2>
+                    <h2 class="mb-3 text-sm md:text-xl font-semibold text-gray-900 dark:text-white">Want to send a message?</h2>
                     <form action="">
                         <input type="text" name="" id="" class="w-full h-10 rounded-lg">
                         <button class="w-full h-10 mt-2 bg-blue-500 hover:bg-blue-600 text-white text-sm md:text-lg rounded-lg md:w-1/2">Send</button>
