@@ -53,7 +53,7 @@
                 <p class="mt-6 text-sm md:text-xl text-justify">Discover the fastest way to find the right connections.
                     Our intuitive contact directory simplifies your search, offering instant access to trusted colleagues
                     and work divisions. Experience seamless navigation and effortless communication, all in one place.</p>
-                <button class="mt-6 w-full h-10 md:w-32 md:h-12 rounded-lg bg-blue-500 hover:bg-blue-600 text-white">
+                <button class="mt-6 w-full h-12 md:w-32 md:h-14 rounded-lg text-sm md:text-xl bg-blue-500 hover:bg-blue-600 text-white">
                     More info
                 </button>
             </div>
@@ -137,15 +137,15 @@
     <section id="faq" class="container mx-auto px-5 mb-10 md:mb-[100px]">
         <div class="mx-auto">
             <h1 class="text-3xl lg:text-5xl font-bold text-center">Frequently Asked Question</h1>
-            <p class="mt-3 text-sm md:text-xl md:mt-5 text-center mb-10">Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. At, reiciendis.</p>
+            <p class="mt-3 text-sm md:text-xl md:mt-5 text-center mb-10">Find answers to common questions about our services
+                and information.</p>
             <div class="w-full">
                 <ul class="space-y-4">
                     <li>
                         <button
                             class="relative flex gap-2 items-center w-full py-4 md:py-5 text-left border-t border-base-content/10 md:text-lg"
                             aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="flex-1 text-sm md:text-xl font-semibold">What is QuickConnect?</span>
+                            <span class="flex-1 text-sm md:text-xl font-semibold">What is GovCall?</span>
                             <i
                                 class="fas fa-plus w-4 h-4 ml-auto transition-transform duration-300 ease-out fa-rotate-90"></i>
                         </button>
@@ -153,7 +153,7 @@
                             style="transition: max-height 0.3s ease-in-out 0s;">
                             <div
                                 class="pb-4 md:pb-5 leading-relaxed border-l-4 border-blue-500 pl-4 md:pl-6 text-sm md:text-xl">
-                                QuickConnect is a digital platform designed to help you search and connect with contacts
+                                GovCall is a digital platform designed to help you search and connect with contacts
                                 effortlessly, quickly, and instantly.
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                             class="relative flex gap-2 items-center w-full py-4 md:py-5 text-left border-t border-base-content/10 md:text-lg"
                             aria-expanded="false" onclick="toggleFAQ(this)">
                             <span class="flex-1 text-sm md:text-xl font-semibold">How do I search for a contact in
-                                QuickConnect?</span>
+                                GovCall?</span>
                             <i
                                 class="fas fa-plus w-4 h-4 ml-auto transition-transform duration-300 ease-out fa-rotate-90"></i>
                         </button>
@@ -171,7 +171,7 @@
                             style="transition: max-height 0.3s ease-in-out 0s;">
                             <div
                                 class="pb-4 md:pb-5 leading-relaxed border-l-4 border-blue-500 pl-4 md:pl-6 text-sm md:text-xl">
-                                Simply type the name or keyword in the search bar and QuickConnect will instantly provide
+                                Simply type the name or keyword in the search bar and GovCall will instantly provide
                                 the most relevant results from your database.
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                         <button
                             class="relative flex gap-2 items-center w-full py-4 md:py-5 text-left border-t border-base-content/10 md:text-lg"
                             aria-expanded="false" onclick="toggleFAQ(this)">
-                            <span class="flex-1 text-sm md:text-xl font-semibold">Can I use QuickConnect on multiple
+                            <span class="flex-1 text-sm md:text-xl font-semibold">Can I use GovCall on multiple
                                 devices?</span>
                             <i
                                 class="fas fa-plus w-4 h-4 ml-auto transition-transform duration-300 ease-out fa-rotate-90"></i>
@@ -189,7 +189,7 @@
                             style="transition: max-height 0.3s ease-in-out 0s;">
                             <div
                                 class="pb-4 md:pb-5 leading-relaxed border-l-4 border-blue-500 pl-4 md:pl-6 text-sm md:text-xl">
-                                Yes, QuickConnect is accessible on any device with an internet connection, including
+                                Yes, GovCall is accessible on any device with an internet connection, including
                                 smartphones, tablets, and desktops.
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                             style="transition: max-height 0.3s ease-in-out 0s;">
                             <div
                                 class="pb-4 md:pb-5 leading-relaxed border-l-4 border-blue-500 pl-4 md:pl-6 text-sm md:text-xl">
-                                Absolutely. QuickConnect uses robust encryption to ensure that your contact information is
+                                Absolutely. GovCall uses robust encryption to ensure that your contact information is
                                 kept safe and private.
                             </div>
                         </div>
@@ -223,7 +223,7 @@
                             style="transition: max-height 0.3s ease-in-out 0s;">
                             <div
                                 class="pb-4 md:pb-5 leading-relaxed border-l-4 border-blue-500 pl-4 md:pl-6 text-sm md:text-xl">
-                                Yes, you can add, edit, and manage your contacts within QuickConnect for easy access and
+                                Yes, you can add, edit, and manage your contacts within GovCall for easy access and
                                 organization.
                             </div>
                         </div>
