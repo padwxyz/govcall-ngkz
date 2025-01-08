@@ -142,4 +142,12 @@ class MasterDataController extends Controller
 
         return redirect()->route('master-data.index')->with('success', 'Data berhasil dihapus.');
     }
+
+    public function getSubDistricts(Request $request)
+    {
+        $districtId = $request->district_id;
+        $subDistricts = SubDistrict::where('district_id', $districtId)->get();
+
+        return response()->json($subDistricts);
+    }
 }
