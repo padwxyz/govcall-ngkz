@@ -55,6 +55,10 @@ class MasterDataController extends Controller
         $districts = District::all();
         $subDistricts = collect();
 
+        if (request()->has('district_id')) {
+            $subDistricts = SubDistrict::where('district_id', request()->input('district_id'))->get();
+        }
+
         return view('pages.admin.add_data', compact('districts', 'subDistricts'));
     }
 
@@ -89,7 +93,8 @@ class MasterDataController extends Controller
 
         $contact->save();
 
-        return redirect()->route('master-data.index')->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('master-data.index')
+            ->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -104,29 +109,38 @@ class MasterDataController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'district_id' => 'required|exists:districts,id',
-            'sub_district_id' => 'required|exists:sub_districts,id',
             'office_name' => 'required|string|max:255',
-            'address' => 'required|string',
-            'email' => 'required|email',
+            'address' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'phone' => 'required|string|max:15',
-            'website' => 'nullable|url',
-            'status' => 'required|in:Aktif,Non Aktif',
+            'district_id' => 'required|integer',
+            'sub_district_id' => 'required|integer',
+            'status' => 'required|string|in:Active,Inactive',
+            'office_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $contact = Contact::findOrFail($id);
-        $contact->update([
-            'district_id' => $request->input('district_id'),
-            'sub_district_id' => $request->input('sub_district_id'),
-            'office_name' => $request->input('office_name'),
-            'address' => $request->input('address'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'website' => $request->input('website'),
-            'status' => $request->input('status'),
-        ]);
+        $contact = Contact::find($id);
 
-        return redirect()->route('master-data.index')->with('success', 'Data berhasil diperbarui.');
+        if (!$contact) {
+            return redirect()->route('master-data.index')->with('error', 'Contact not found.');
+        }
+
+        $contact->office_name = $request->office_name;
+        $contact->address = $request->address;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->district_id = $request->district_id;
+        $contact->sub_district_id = $request->sub_district_id;
+        $contact->status = $request->status;
+
+        if ($request->hasFile('office_photo')) {
+            $imagePath = $request->file('office_photo')->store('office_photos', 'public');
+            $contact->office_photo = $imagePath;
+        }
+
+        $contact->save();
+
+        return redirect()->route('master-data.index')->with('success', 'Data has been updated successfully.');
     }
 
     public function show($id)
