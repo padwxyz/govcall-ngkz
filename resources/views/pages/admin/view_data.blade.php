@@ -1,6 +1,4 @@
-@extends('components.layouts.main')
-
-@include('components.partials.sidebar')
+@extends('components.layouts.main_admin')
 
 @section('container')
     <section class="px-5 md:pl-24 md:pr-20 my-10 md:ml-56 flex-grow mt-[110px]">
