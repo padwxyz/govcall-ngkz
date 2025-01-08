@@ -140,6 +140,6 @@ class MasterDataController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->delete();
 
-        return redirect()->route('master-data')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('master-data.index')->with('success', 'Data berhasil dihapus.');
     }
 }
