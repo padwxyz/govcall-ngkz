@@ -37,8 +37,11 @@ class ContactController extends Controller
             $contactsQuery->orWhere('office_name', 'like', '%' . $searchQuery . '%');
         }
 
-        $contacts = $contactsQuery->get();
+        $contacts = $contactsQuery->paginate(10)->appends([
+            'search' => $searchQuery,
+            'filter' => $filter,
+        ]);
 
-        return view('pages.user.search_result', compact('contacts', 'searchQuery'));
+        return view('pages.user.search_result', compact('contacts', 'searchQuery', 'filter'));
     }
 }
