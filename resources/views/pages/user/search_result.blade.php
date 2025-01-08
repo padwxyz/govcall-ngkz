@@ -96,9 +96,28 @@
                         @php
                             $currentPage = $contacts->currentPage();
                             $totalPages = $contacts->lastPage();
-                            $start = 1;
-                            $end = min(5, $totalPages);
+                            $start = max($currentPage - 2, 1);
+                            $end = min($start + 4, $totalPages);
+
+                            if ($end - $start < 4) {
+                                $start = max($end - 4, 1);
+                            }
+
+                            $showFirstPage = $start > 2;
+                            $showLastPage = $end < $totalPages;
                         @endphp
+
+                        @if ($showFirstPage)
+                            <a href="{{ $contacts->url(1) }}"
+                                class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                1
+                            </a>
+                        @endif
+
+                        @if ($start > 1)
+                            <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
+                        @endif
+
                         @for ($i = $start; $i <= $end; $i++)
                             @if ($i == $currentPage)
                                 <button
@@ -106,19 +125,19 @@
                                     {{ $i }}
                                 </button>
                             @else
-                                <a href="{{ $contacts->url($i) }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                                <a href="{{ $contacts->url($i) }}"
                                     class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
                                     {{ $i }}
                                 </a>
                             @endif
                         @endfor
 
-                        @if ($totalPages > 5)
+                        @if ($end < $totalPages - 1)
                             <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
                         @endif
 
-                        @if ($totalPages > 5 && $currentPage < $totalPages)
-                            <a href="{{ $contacts->url($totalPages) }}&search={{ request('search') }}&filter={{ request('filter') }}"
+                        @if ($showLastPage)
+                            <a href="{{ $contacts->url($totalPages) }}"
                                 class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
                                 {{ $totalPages }}
                             </a>
