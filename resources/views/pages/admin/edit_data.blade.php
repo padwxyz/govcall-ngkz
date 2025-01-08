@@ -70,6 +70,11 @@
                         class="w-full text-sm md:text-lg px-3 py-2 border rounded">
                 </div>
                 <div class="mb-4">
+                    <label for="website" class="block text-sm md:text-lg text-gray-700">Website</label>
+                    <input type="text" id="website" name="website" value="{{ $contact->website }}"
+                        class="w-full text-sm md:text-lg px-3 py-2 border rounded">
+                </div>
+                <div class="mb-4">
                     <label for="status" class="block text-sm md:text-lg text-gray-700">Status</label>
                     <select id="status" name="status" class="w-full text-sm md:text-lg px-3 py-2 border rounded">
                         <option value="Active" {{ $contact->status == 'Active' ? 'selected' : '' }}>Active</option>
