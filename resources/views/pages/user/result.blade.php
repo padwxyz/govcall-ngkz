@@ -1,9 +1,7 @@
-@extends('components.layouts.main')
-
-@include('components.partials.navbar')
+@extends('components.layouts.main_user')
 
 @section('container')
-    <section class="container mx-auto mt-24 md:mt-[100px] mb-10 md:mb-[100px] px-5 md:p-0">
+    <section class="container min-h-screen mx-auto mt-24 md:mt-[100px] mb-10 px-5 md:p-0">
         <div>
             <p class="text-xl md:text-2xl md:mt-8">
                 <a href="/">Home</a>
@@ -50,7 +48,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center py-5">No contacts found for this district.</td>
+                                    <td colspan="7" class="text-center py-5 text-sm md:text-xl">No contacts found for this district.</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -123,6 +121,4 @@
             </div>
         </div>
     </section>
-
-    @include('components.partials.footer')
 @endsection

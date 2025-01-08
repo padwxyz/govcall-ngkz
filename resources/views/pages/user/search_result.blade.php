@@ -1,9 +1,7 @@
-@extends('components.layouts.main')
-
-@include('components.partials.navbar')
+@extends('components.layouts.main_user')
 
 @section('container')
-    <section class="container mx-auto mt-24 md:mt-[100px] mb-10 md:mb-[100px] px-5 md:p-0">
+    <section class="container min-h-screen mx-auto mt-24 md:mt-[100px] mb-10 px-5 md:p-0">
         <div>
             <p class="text-xl md:text-2xl md:mt-8">
                 <a href="/">Home</a>
@@ -18,20 +16,26 @@
             </div>
 
             <div class="p-3 mt-3 md:p-5 md:mt-5 w-full rounded-lg shadow-lg bg-white">
-                <form action="{{ route('search') }}" method="get" class="mb-5 flex justify-between items-center">
-                    <div class="flex gap-2">
-                        <select name="filter" class="p-2 rounded-lg border">
-                            <option value="all">All</option>
-                            <option value="district" {{ request('filter') == 'district' ? 'selected' : '' }}>District
-                            </option>
-                            <option value="sub-district" {{ request('filter') == 'sub-district' ? 'selected' : '' }}>
-                                Sub-District</option>
-                            <option value="office" {{ request('filter') == 'office' ? 'selected' : '' }}>Office Name
-                            </option>
-                        </select>
-                        <input type="text" name="search" value="{{ old('search') }}" placeholder="Search..."
-                            class="w-1/2 p-2 rounded-lg border">
-                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Search</button>
+                <form action="{{ route('search') }}" method="GET" class="mb-5">
+                    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-2 items-center">
+                        <div class="flex flex-col md:flex-row gap-2 items-center">
+                            <select name="filter" class="p-3 rounded-lg border border-gray-400 w-full md:w-auto">
+                                <option value="all">All</option>
+                                <option value="district" {{ request('filter') == 'district' ? 'selected' : '' }}>District
+                                </option>
+                                <option value="sub-district" {{ request('filter') == 'sub-district' ? 'selected' : '' }}>
+                                    Sub-District</option>
+                                <option value="office" {{ request('filter') == 'office' ? 'selected' : '' }}>Office Name
+                                </option>
+                            </select>
+                            <input type="text" name="search" value="{{ old('search') }}" placeholder="Search..."
+                                class="p-3 rounded-lg border border-gray-400 w-full md:flex-1">
+                        </div>
+                        <div class="text-center md:text-right">
+                            <button type="submit" class="px-10 py-3 bg-blue-500 text-white rounded-lg w-full md:w-auto">
+                                Search
+                            </button>
+                        </div>
                     </div>
                 </form>
 
@@ -66,7 +70,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center py-5">No contacts found for your search.</td>
+                                    <td colspan="7" class="text-center py-5 text-sm md:text-xl">No contacts found for
+                                        your search.</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -75,7 +80,8 @@
                 <div class="flex flex-row justify-center items-center gap-4 mt-5 py-2">
                     <div>
                         @if ($contacts->onFirstPage())
-                            <button class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
+                            <button
+                                class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
                         @else
@@ -85,7 +91,7 @@
                             </a>
                         @endif
                     </div>
-                
+
                     <div class="flex gap-1">
                         @php
                             $currentPage = $contacts->currentPage();
@@ -95,7 +101,8 @@
                         @endphp
                         @for ($i = $start; $i <= $end; $i++)
                             @if ($i == $currentPage)
-                                <button class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                <button
+                                    class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
                                     {{ $i }}
                                 </button>
                             @else
@@ -105,7 +112,7 @@
                                 </a>
                             @endif
                         @endfor
-                        
+
                         @if ($totalPages > 5)
                             <span class="flex items-center justify-center w-10 h-10 text-gray-500">...</span>
                         @endif
@@ -117,7 +124,7 @@
                             </a>
                         @endif
                     </div>
-                
+
                     <div>
                         @if ($contacts->hasMorePages())
                             <a href="{{ $contacts->nextPageUrl() }}"
@@ -125,15 +132,14 @@
                                 <i class="fas fa-chevron-right"></i>
                             </a>
                         @else
-                            <button class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
+                            <button
+                                class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         @endif
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </section>
-
-    @include('components.partials.footer')
 @endsection
