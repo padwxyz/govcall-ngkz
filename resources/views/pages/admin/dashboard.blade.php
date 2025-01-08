@@ -3,7 +3,7 @@
 @section('container')
     <section class="px-5 md:pl-24 md:pr-20 my-10 md:ml-56 flex-grow mt-[100px]">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+            <h1 class="text-2xl md:text-5xl font-bold">Hello! Welcome {{ Auth::guard('admin')->user()->name }}👋 </h1>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
