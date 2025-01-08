@@ -22,6 +22,7 @@
 </head>
 
 <body style="font-family: 'Outfit', serif;" class="m-0 p-0 scroll-smooth">
+    @include('components.partials.sidebar')
     @yield('container')
 </body>
 
