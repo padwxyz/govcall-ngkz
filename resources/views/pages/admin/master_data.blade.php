@@ -1,11 +1,9 @@
-@extends('components.layouts.main')
-
-@include('components.partials.sidebar')
+@extends('components.layouts.main_admin')
 
 @section('container')
     <section class="px-5 md:pl-24 md:pr-20 my-10 md:ml-56 flex-grow mt-[100px]">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold">Master Data</h1>
+            <h1 class="text-2xl md:text-5xl font-bold">Master Data</h1>
         </div>
 
         <form method="GET" action="{{ route('master-data.index') }}" class="space-y-4 mb-6">
@@ -77,18 +75,18 @@
                                 <td class="px-4 py-3">
                                     <div class="flex flex-row items-center space-x-2">
                                         <a href="{{ route('master-data.edit', $contact->id) }}"
-                                            class="bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition duration-150 ease-in-out">
+                                            class="bg-blue-500 text-white px-5 py-3 rounded-lg hover:bg-blue-600 transition duration-150 ease-in-out">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="{{ route('master-data.show', $contact->id) }}"
-                                            class="bg-green-500 text-white p-3 rounded hover:bg-green-600 transition duration-150 ease-in-out">
+                                            class="bg-green-500 text-white px-5 py-3 rounded-lg hover:bg-green-600 transition duration-150 ease-in-out">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <form action="{{ route('master-data.destroy', $contact->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="bg-red-500 text-white p-3 mt-4 rounded hover:bg-red-600 transition duration-150 ease-in-out"
+                                                class="bg-red-500 text-white px-5 py-3 rounded-lg hover:bg-red-600 transition duration-150 ease-in-out"
                                                 onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
                                                 <i class="fas fa-trash"></i>
                                             </button>
