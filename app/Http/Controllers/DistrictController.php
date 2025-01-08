@@ -15,7 +15,12 @@ class DistrictController extends Controller
 
     public function show($id)
     {
-        $districts = District::with(['sub_districts', 'contacts'])->findOrFail($id);
-        return view('pages.user.result', compact('districts'));
+        $districts = District::with(['sub_districts', 'contacts' => function ($query) {
+            $query->paginate(10);
+        }])->findOrFail($id);
+
+        $contacts = $districts->contacts()->paginate(10);
+
+        return view('pages.user.result', compact('districts', 'contacts'));
     }
 }

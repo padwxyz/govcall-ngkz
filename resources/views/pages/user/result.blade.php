@@ -35,7 +35,7 @@
                         <tbody>
                             @forelse($districts->contacts as $index => $contact)
                                 <tr class="bg-white border-b text-sm md:text-lg">
-                                    <td class="px-4 py-3">{{ $index + 1 }}</td>
+                                    <td class="px-4 py-3">{{ $contacts->firstItem() + $index }}</td>
                                     <td class="px-4 py-3">{{ $contact->office_name }}</td>
                                     <td class="px-4 py-3">{{ $contact->district->name ?? '-' }}</td>
                                     <td class="px-4 py-3">{{ $contact->sub_district->name ?? '-' }}</td>
@@ -56,47 +56,51 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
-                    <div class="flex flex-row justify-center items-center gap-4 mt-5 py-2">
-                        <div>
+
+                <div class="flex flex-row justify-center items-center gap-4 mt-5 py-2">
+                    <div>
+                        @if ($contacts->onFirstPage())
                             <button
-                                class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 text-mdvmd:er">
+                                class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                        </div>
-                        <div class="flex gap-1">
+                        @else
+                            <a href="{{ $contacts->previousPageUrl() }}"
+                                class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="flex gap-1">
+                        @foreach ($contacts->links()->elements[0] as $page => $url)
+                            @if ($page == $contacts->currentPage())
+                                <button
+                                    class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                    {{ $page }}
+                                </button>
+                            @else
+                                <a href="{{ $url }}"
+                                    class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                    {{ $page }}
+                                </a>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div>
+                        @if ($contacts->hasMorePages())
+                            <a href="{{ $contacts->nextPageUrl() }}"
+                                class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        @else
                             <button
-                                class="flex items-center justify-center w-10 h-10 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-                                1
-                            </button>
-                            <button
-                                class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 text-mdvmd:er">
-                                2
-                            </button>
-                            <button
-                                class="flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 text-mdvmd:er">
-                                3
-                            </button>
-                        </div>
-                        <div>
-                            <button
-                                class="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 text-mdvmd:er">
+                                class="flex items-center justify-center px-4 py-2 bg-gray-200 border border-gray-300 rounded-lg cursor-not-allowed">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
-
-            {{-- <div class="my-10 w-full p-10 rounded-lg bg-blue-500">
-                <h1 class="text-xl lg:text-5xl font-bold text-white">Lorem ipsum dolor sit amet consectetur adipisicing?
-                </h1>
-                <p class="text-sm md:text-lg mt-5 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maxime illum
-                    magni.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum aliquid ratione sed quod sapiente sit
-                    beatae ut maxime nesciunt! Corporis! <span><a href="">nulla dolorum</a></span></p>
-            </div> --}}
         </div>
     </section>
 
