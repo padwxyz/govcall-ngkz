@@ -19,9 +19,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body style="font-family: 'Outfit', serif;" class="m-0 p-0 scroll-smooth">
+<body style="font-family: 'Outfit', serif;" class="m-0 p-0">
     @include('components.partials.navbar')
     @yield('container')
     @include('components.partials.footer')
