@@ -65,7 +65,7 @@
                         <form action="{{ route('login-admin') }}" method="POST"
                             class="flex flex-col w-full sm:w-[400px] md:w-[500px] h-full pb-6 pt-6 text-center bg-white rounded-3xl">
                             @csrf
-                            <h3 class="mb-3 text-3xl sm:text-4xl font-extrabold text-blue-500">GovCall Login Admin</h3>
+                            <h3 class="mb-3 text-3xl sm:text-4xl font-extrabold text-[#003080]">GovCall Login Admin</h3>
                             <p class="mb-4 text-grey-700">Enter your email and password</p>
 
                             <div class="flex items-center mb-3">
