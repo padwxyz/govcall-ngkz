@@ -12,7 +12,9 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contact::with(['district:id,name,zip_code', 'sub_district:id,name,zip_code'])->findOrFail($id);
-        return view('pages.user.detail_information', compact('contact'));
+        return view('pages.user.detail_information', [
+            'title' => 'Detail Information'
+        ], compact('contact'));
     }
 
     public function search(Request $request)
@@ -42,6 +44,8 @@ class ContactController extends Controller
             'filter' => $filter,
         ]);
 
-        return view('pages.user.search_result', compact('contacts', 'searchQuery', 'filter'));
+        return view('pages.user.search_result', [
+            'title' => 'Search Result'
+        ], compact('contacts', 'searchQuery', 'filter'));
     }
 }

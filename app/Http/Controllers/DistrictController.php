@@ -10,7 +10,9 @@ class DistrictController extends Controller
     public function index()
     {
         $districts = District::all();
-        return view('pages.user.landing_page', compact('districts'));
+        return view('pages.user.landing_page', [
+            'title' => 'Home'
+        ], compact('districts'));
     }
 
     public function show($id)
@@ -21,6 +23,8 @@ class DistrictController extends Controller
 
         $contacts = $districts->contacts()->paginate(10);
 
-        return view('pages.user.result', compact('districts', 'contacts'));
+        return view('pages.user.result', [
+            'title' => 'Search Result'
+        ], compact('districts', 'contacts'));
     }
 }

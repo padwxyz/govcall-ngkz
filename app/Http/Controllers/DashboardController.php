@@ -20,6 +20,8 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        return view('pages.admin.dashboard', compact('totalData', 'activeDistricts', 'activeSubDistricts', 'newDataThisMonth', 'recentContacts'));
+        return view('pages.admin.dashboard', [
+            'title' => 'Dashboard Admin'
+        ], compact('totalData', 'activeDistricts', 'activeSubDistricts', 'newDataThisMonth', 'recentContacts'));
     }
 }

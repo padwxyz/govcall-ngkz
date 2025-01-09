@@ -47,7 +47,9 @@ class MasterDataController extends Controller
         $districts = District::all();
         $subDistricts = $districtId ? SubDistrict::where('district_id', $districtId)->get() : collect();
 
-        return view('pages.admin.master_data', compact('contacts', 'districts', 'subDistricts'));
+        return view('pages.admin.master_data', [
+            'title' => 'Master Data'
+        ], compact('contacts', 'districts', 'subDistricts'));
     }
 
     public function create()
@@ -59,7 +61,9 @@ class MasterDataController extends Controller
             $subDistricts = SubDistrict::where('district_id', request()->input('district_id'))->get();
         }
 
-        return view('pages.admin.add_data', compact('districts', 'subDistricts'));
+        return view('pages.admin.add_data', [
+            'title' => 'Add New Data'
+        ], compact('districts', 'subDistricts'));
     }
 
     public function store(Request $request)
@@ -103,7 +107,9 @@ class MasterDataController extends Controller
         $districts = District::all();
         $subDistricts = SubDistrict::where('district_id', $contact->district_id)->get();
 
-        return view('pages.admin.edit_data', compact('contact', 'districts', 'subDistricts'));
+        return view('pages.admin.edit_data', [
+            'title' => 'Edit Data'
+        ], compact('contact', 'districts', 'subDistricts'));
     }
 
     public function update(Request $request, $id)
@@ -146,7 +152,9 @@ class MasterDataController extends Controller
     public function show($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('pages.admin.view_data', compact('contact'));
+        return view('pages.admin.view_data', [
+            'title' => 'View Data'
+        ], compact('contact'));
     }
 
     public function destroy($id)

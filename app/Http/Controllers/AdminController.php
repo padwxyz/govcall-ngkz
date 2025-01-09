@@ -10,7 +10,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('pages.auth.login_admin', [
-            // 'title' => 'Login Admin'
+            'title' => 'Login Admin'
         ]);
     }
 
