@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Models\District;
-use App\Models\SubDistrict;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function show($id)
     {
-        $contact = Contact::with(['district:id,name,zip_code', 'sub_district:id,name,zip_code'])->findOrFail($id);
+        $contact = Contact::with(['district:id,name,zip_code', 
+        'sub_district:id,name,zip_code'])->findOrFail($id);
+
         return view('pages.user.detail_information', [
             'title' => 'Detail Information'
         ], compact('contact'));

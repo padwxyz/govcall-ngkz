@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use Illuminate\Http\Request;
 use App\Models\District;
 use App\Models\SubDistrict;
 
@@ -22,6 +21,7 @@ class DashboardController extends Controller
 
         return view('pages.admin.dashboard', [
             'title' => 'Dashboard Admin'
-        ], compact('totalData', 'activeDistricts', 'activeSubDistricts', 'newDataThisMonth', 'recentContacts'));
+        ], compact('totalData', 'activeDistricts', 'activeSubDistricts',
+        'newDataThisMonth', 'recentContacts'));
     }
 }
